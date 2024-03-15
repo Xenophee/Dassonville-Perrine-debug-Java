@@ -17,9 +17,8 @@ public class AnalyticsCounter {
 		String line = reader.readLine();
 
 
-		int i = 0;
 		while (line != null) {
-			i++;
+
 			if (line.equals("headache")) {
 				headacheCount++;
 			}
@@ -34,7 +33,7 @@ public class AnalyticsCounter {
 		}
 
 
-		Map<String, Integer> symptoms = new HashMap<String, Integer>();
+		Map<String, Integer> symptoms = new HashMap<>();
 		symptoms.put("headache", headacheCount);
 		symptoms.put("rash", rashCount);
 		symptoms.put("dialated pupils", pupilCount);
