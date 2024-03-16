@@ -26,19 +26,16 @@ public class WriteSymptomDataToFile implements ISymptomWriter {
 
         try(BufferedWriter writer = Files.newBufferedWriter(fileToWrite, StandardOpenOption.APPEND)) {
 
-            symptoms.entrySet().stream()
-                    .sorted(Map.Entry.comparingByKey())
-                    .forEach(entry -> {
-                        String key = entry.getKey();
-                        Integer value = entry.getValue();
 
-                        try {
-                            writer.write(key + " : " + value + System.lineSeparator());
-                        } catch (IOException e) {
-                            System.err.println("Erreur lors de la création du fichier : " + e.getMessage());
-                        }
+            symptoms.forEach((key, value) -> {
 
-                    });
+                try {
+                    writer.write(key + " : " + value + System.lineSeparator());
+                } catch (IOException e) {
+                    System.err.println("Erreur lors de la création du fichier : " + e.getMessage());
+                }
+
+            });
 
         } catch (Exception e) {
             System.err.println("Erreur lors de la création du fichier : " + e.getMessage());
