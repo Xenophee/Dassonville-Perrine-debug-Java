@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,14 +34,14 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 * Retrieves a list of symptom from the specified file.
 	 *
 	 * @return A list containing the symptom strings read from the file.
-	 *         If an error occurs during the reading process, null is returned.
+	 *         If an error occurs during the reading process, empty array is returned.
 	 */
 	@Override
 	public List<String> getSymptoms() {
 
         Path newFilePath = Paths.get(filePathToRead);
 
-        List<String> readFile = null;
+        List<String> readFile = new ArrayList<>();
 
         try (BufferedReader reader = Files.newBufferedReader(newFilePath)) {
 			readFile = reader.lines().toList();
